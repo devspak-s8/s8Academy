@@ -1,0 +1,43 @@
+@import "tailwindcss";
+:root {
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Custom gradient border */
+.gradient-border {
+  position: relative;
+  border: 3px solid transparent;
+  border-radius: 5px;
+  background: white;
+  background-clip: padding-box;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  z-index: -1;
+  border-radius: 5px;
+  background: linear-gradient(-145deg, rgba(219,138,222,0.5), rgba(246,191,159,0.5));
+}
+.gradient-border-active::before {
+  background: linear-gradient(-145deg, rgba(219,138,222,1), rgba(246,191,159,1));
+}
+
+
+.feature-area {
+  margin-top: -150px; }
+  .feature-area .container-fluid {
+    padding-left: 18px; } 
+
+    .popular-course-area .container-fluid {
+      padding-left: 21%;
+      padding-right: 0; }
