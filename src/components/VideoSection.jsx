@@ -71,31 +71,33 @@ const VideoSection = () => {
   };
 
   return (
- <section
-       className="relative z-20 mb-[160px] bg-cover bg-center  py-40 md:py-16 lg:bg-transparent bg-purple-700 sm:bg-none"
-      style={{
-            backgroundImage: `url(${vidImg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}   >
-       <div className="container mx-auto px-20">
-         <div className="flex flex-col lg:flex-row items-end">
-           {/* Text Column */}
-           <div className="w-full lg:w-5/12 mb-8 lg:mb-0">
-             <div className="text-white">
-               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                 Watch Our Trainers <br /> in Live Action
-               </h2>
-               <p className="text-lg">
-                 If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You
-                 may see some for as low as $.17 each.
-               </p>
-             </div>
-           </div>
- 
-           {/* Form Column */}
-           <div className="w-full lg:w-4/12 lg:ml-auto mt-12 lg:mt-0">
+<section
+  className="relative z-20 mb-[160px] bg-cover bg-center lg:bg-transparent bg-purple-700 sm:bg-none"
+  style={{
+    backgroundImage: `url(${vidImg})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    minHeight: '600px', // force height so centering works
+  }}
+>
+  <div className="container mx-auto px-4">
+    <div className="flex flex-col lg:flex-row items-stretch min-h-[600px]">
+      {/* Text Column */}
+      <div className="w-full lg:w-5/12 flex items-center">
+        <div className="text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Watch Our Trainers <br /> in Live Action
+          </h2>
+          <p className="text-lg">
+            If you are looking at blank cassettes on the web, you may be very confused at the difference in price. You
+            may see some for as low as $.17 each.
+          </p>
+        </div>
+      </div>
+
+      {/* Video/Form Column */}
+      <div className="w-full lg:w-4/12 lg:ml-auto mt-12 lg:mt-0">
             <Slider {...settings}>
               {videos.map((video) => (
                 <div key={video.id} className="px-4">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
 import bgImg from '../assets/img/registration-bg.png';
 
@@ -6,51 +6,51 @@ import bgImg from '../assets/img/registration-bg.png';
 Modal.setAppElement('#root');
 
 const RegistrationSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-  });
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [formData, setFormData] = useState({
+  //   name: '',
+  //   phone: '',
+  //   email: '',
+  // });
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [modalMessage, setModalMessage] = useState('');
+  // const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({ ...prev, [name]: value }));
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Basic validation
-    if (!formData.name || !formData.email || !formData.phone) {
-      setModalMessage('Please fill out all fields.');
-      setModalIsOpen(true);
-      return;
-    }
-    if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      setModalMessage('Please enter a valid email address.');
-      setModalIsOpen(true);
-      return;
-    }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Basic validation
+  //   if (!formData.name || !formData.email || !formData.phone) {
+  //     setModalMessage('Please fill out all fields.');
+  //     setModalIsOpen(true);
+  //     return;
+  //   }
+  //   if (!/\S+@\S+\.\S+/.test(formData.email)) {
+  //     setModalMessage('Please enter a valid email address.');
+  //     setModalIsOpen(true);
+  //     return;
+  //   }
 
-    setIsSubmitting(true);
-    setModalMessage('Submitting...');
-    setModalIsOpen(true);
+  //   setIsSubmitting(true);
+  //   setModalMessage('Submitting...');
+  //   setModalIsOpen(true);
 
-    // Simulate form submission (replace with backend call later)
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setModalMessage('Registration submitted successfully!');
-      setIsSubmitting(false);
-      setFormData({ name: '', phone: '', email: '' });
-    }, 2000);
-  };
+  //   // Simulate form submission (replace with backend call later)
+  //   setTimeout(() => {
+  //     console.log('Form submitted:', formData);
+  //     setModalMessage('Registration submitted successfully!');
+  //     setIsSubmitting(false);
+  //     setFormData({ name: '', phone: '', email: '' });
+  //   }, 2000);
+  // };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setModalMessage('');
-  };
+  // const closeModal = () => {
+  //   setModalIsOpen(false);
+  //   setModalMessage('');
+  // };
 
   return (
     <section
@@ -81,46 +81,50 @@ const RegistrationSection = () => {
             <div className="bg-transparent text-center p-8 sm:p-16 shadow-[0_0_50px_rgba(185,55,223,0.45)]">
               <h3 className="text-2xl font-bold text-white mb-2">Courses for Free</h3>
               <p className="text-base text-white mb-6">It is high time for learning</p>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="NAME"
-                    className="w-full bg-transparent border-b border-gray-400 text-white text-sm py-5 px-0 focus:outline-none focus:border-white placeholder-white placeholder-opacity-40 uppercase"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="text"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder="PHONE NUMBER"
-                    className="w-full bg-transparent border-b border-gray-400 text-white text-sm py-5 px-0 focus:outline-none focus:border-white placeholder-white placeholder-opacity-40 uppercase"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="EMAIL ADDRESS"
-                    className="w-full bg-transparent border-b border-gray-400 text-white text-sm py-5 px-0 focus:outline-none focus:border-white placeholder-white placeholder-opacity-40 uppercase"
-                  />
-                </div>
-                <div className="text-center">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="bg-blue-700 text-white text-sm font-bold py-4 px-24 uppercase rounded-none hover:bg-blue-600 transition disabled:opacity-50"
-                  >
-                    Submit
-                  </button>
-                </div>
+              <form  className="space-y-6">
+              <div>
+  <input
+    type="text"
+    name="name"
+    placeholder="NAME"
+    disabled
+    className="w-full bg-transparent border-b border-gray-400 text-white text-sm py-5 px-0 placeholder-white placeholder-opacity-40 uppercase opacity-60 cursor-not-allowed"
+  />
+</div>
+<div>
+  <input
+    type="text"
+    name="phone"
+    placeholder="PHONE NUMBER"
+    disabled
+    className="w-full bg-transparent border-b border-gray-400 text-white text-sm py-5 px-0 placeholder-white placeholder-opacity-40 uppercase opacity-60 cursor-not-allowed"
+  />
+</div>
+<div>
+  <input
+    type="email"
+    name="email"
+    placeholder="EMAIL ADDRESS"
+    disabled
+    className="w-full bg-transparent border-b border-gray-400 text-white text-sm py-5 px-0 placeholder-white placeholder-opacity-40 uppercase opacity-60 cursor-not-allowed"
+  />
+</div>
+
+<div className="text-center mt-6">
+  <button
+    type="button"
+    // onClick={handleGoogleSignIn}
+    className="bg-white text-gray-800 font-semibold py-3 px-6 rounded-md shadow-lg flex items-center justify-center gap-3 mx-auto hover:bg-gray-100 transition"
+  >
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+      alt="Google"
+      className="w-5 h-5"
+    />
+    Continue with Google
+  </button>
+</div>
+
               </form>
             </div>
           </div>
@@ -128,7 +132,7 @@ const RegistrationSection = () => {
       </div>
 
       {/* Modal */}
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         className="fixed inset-0 flex items-center justify-center p-4"
@@ -147,7 +151,7 @@ const RegistrationSection = () => {
             </button>
           )}
         </div>
-      </Modal>
+      </Modal> */}
     </section>
   );
 };

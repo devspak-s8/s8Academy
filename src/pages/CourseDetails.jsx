@@ -3,10 +3,12 @@ import React from "react";
 import Banner from "../components/Banner";
 import FooterSection from "../components/Footer"; // ✅ fixed import
 import CoursesSection from "../components/Cousredetailing";
+
+import Example2 from "../components/Banner";
 const CourseDetails = () => {
   return (
     <div>
-      <Banner />
+      <Example2 />
       <CoursesSection/>
       <FooterSection />
     </div>

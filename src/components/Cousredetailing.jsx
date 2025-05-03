@@ -19,7 +19,7 @@ const courses = [
     image: '/assets/courses-02.jpg',
     price: '$156',
     description:
-      'You are not allowed to redistribute this template ZIP file on any other website without a permission from us.<br><br>There are some unethical people on this world copied and reposted our templates without any permission from us. Their Karma will hit them really hard. Yeah!',
+      'You are not allowed to redistribute thirom us.<br><br>There are some unethical people on this world copied and reposted our templates without any permission from us. Their Karma will hit them really hard. Yeah!',
     hours: '48 Hours',
     weeks: '6 Weeks',
     certificates: '1 Certificate',
@@ -52,7 +52,7 @@ const CoursesSection = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section id="courses" className="relative py-16 bg-gray-100">
+    <section id="courses" className="relative py-16 px-4">
       {/* Decorative Images */}
       <div
         className="absolute left-12 top-[-140px] w-[291px] h-[231px] bg-no-repeat bg-center z-10 hidden lg:block"
@@ -63,7 +63,7 @@ const CoursesSection = () => {
         style={{ backgroundImage: `url('/assets/our-courses-right-dec.png')` }}
       ></div>
 
-      <div className="container mx-auto px-4">
+      <div className="container max-w-5xl mx-auto px-4">
         <div className="flex flex-col items-center">
           {/* Section Heading */}
           <div className="text-center mb-12 max-w-2xl">
@@ -81,7 +81,7 @@ const CoursesSection = () => {
             <div className="flex flex-col lg:flex-row">
               {/* Menu */}
               <div className="w-full lg:w-3/12 mb-8 lg:mb-0">
-                <div className="space-y-10">
+                <div className="space-y-4">
                   {courses.map((course, index) => (
                     <div
                       key={course.id}
@@ -98,7 +98,7 @@ const CoursesSection = () => {
 
               {/* Content */}
               <div className="w-full lg:w-9/12 lg:pl-24">
-                <ul className="relative min-h-[400px] m-0 p-0">
+                <ul className="relative min-h-[300px] m-0 p-0">
                   {courses.map((course, index) => (
                     <li
                       key={course.id}
@@ -124,7 +124,7 @@ const CoursesSection = () => {
                         <div className="p-10 lg:ml-12 w-full">
                           <h4 className="text-xl font-extrabold text-gray-800 mb-6">{course.title}</h4>
                           <p
-                            className="text-base text-gray-600 mb-5"
+                            className="text-xs  text-gray-600 mb-2"
                             dangerouslySetInnerHTML={{ __html: course.description }}
                           />
                           <div className="flex flex-wrap gap-4 mb-5">
