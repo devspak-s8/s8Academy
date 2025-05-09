@@ -9,7 +9,7 @@ const features = [
 const Features = () => {
   return (
     <section className="feature-area mt-[-210px] max-[1680px]:mt-[-110px] max-[1200px]:hidden max-[991px]:mt-0">
-      <div className="container-fluid pl-[150px] max-[767px]:pl-[15px] 2xl:max-w-[1140px] 2xl:pl-0">
+      <div className="container-fluid pl-[190px] max-[767px]:pl-[15px] 2xl:max-w-[1140px] 2xl:pl-0">
         <div className="flex flex-wrap">
           {features.map((f, idx) => {
             const Icon = f.icon;

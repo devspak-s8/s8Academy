@@ -23,9 +23,6 @@ const CourseDetails = () => {
 
      
 
-
-      {/* Supplementary Content */}
-      <VideoSection />
       <FeatureSection/>
       <RegistrationSection/>
       {/* Footer */}

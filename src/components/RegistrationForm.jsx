@@ -1,6 +1,5 @@
 import React from 'react';
 import Modal from 'react-modal';
-import bgImg from '../assets/img/registration-bg.png';
 
 // Bind modal to app element for accessibility
 Modal.setAppElement('#root');
@@ -55,17 +54,12 @@ const RegistrationSection = () => {
   return (
     <section
       className="relative z-20 mb-[160px] bg-cover bg-center  py-40 md:py-16 lg:bg-transparent bg-purple-700 sm:bg-none"
-     style={{
-           backgroundImage: `url(${bgImg})`,
-           backgroundSize: 'cover',
-           backgroundPosition: 'center',
-           backgroundRepeat: 'no-repeat',
-         }}   >
+     >
       <div className="container mx-auto px-20">
         <div className="flex flex-col lg:flex-row items-end">
           {/* Text Column */}
           <div className="w-full lg:w-5/12 mb-8 lg:mb-0">
-            <div className="text-white">
+            <div className="text-gray-400">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 Watch Our Trainers <br /> in Live Action
               </h2>
@@ -77,61 +71,59 @@ const RegistrationSection = () => {
           </div>
 
           {/* Form Column */}
-          <div className="w-full lg:w-4/12 lg:ml-auto mt-12 lg:mt-0">
-            <div className="bg-transparent text-center p-8 sm:p-16 shadow-[0_0_50px_rgba(185,55,223,0.45)]">
-              <h3 className="text-2xl font-bold text-white mb-2">Courses for Free</h3>
-              <p className="text-base text-white mb-6">It is high time for learning</p>
-              <form  className="space-y-6">
-              <div>
-  <input
-    type="text"
-    name="name"
-    placeholder="NAME"
-    disabled
-    className="w-full bg-transparent border-b border-gray-400 text-white text-sm py-5 px-0 placeholder-white placeholder-opacity-40 uppercase opacity-60 cursor-not-allowed"
-  />
-</div>
-<div>
-  <input
-    type="text"
-    name="phone"
-    placeholder="PHONE NUMBER"
-    disabled
-    className="w-full bg-transparent border-b border-gray-400 text-white text-sm py-5 px-0 placeholder-white placeholder-opacity-40 uppercase opacity-60 cursor-not-allowed"
-  />
-</div>
-<div>
-  <input
-    type="email"
-    name="email"
-    placeholder="EMAIL ADDRESS"
-    disabled
-    className="w-full bg-transparent border-b border-gray-400 text-white text-sm py-5 px-0 placeholder-white placeholder-opacity-40 uppercase opacity-60 cursor-not-allowed"
-  />
-</div>
-
-<div className="text-center mt-6">
-  <button
-    type="button"
-    // onClick={handleGoogleSignIn}
-    className="bg-white text-gray-800 font-semibold py-3 px-6 rounded-md shadow-lg flex items-center justify-center gap-3 mx-auto hover:bg-gray-100 transition"
-  >
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-      alt="Google"
-      className="w-5 h-5"
-    />
-    Continue with Google
-  </button>
-</div>
-
-              </form>
-            </div>
+                <div className="w-full lg:w-4/12 lg:ml-auto mt-12 lg:mt-0">
+                <div className="bg-transparent text-center p-8 sm:p-16 shadow-[0_0_50px_rgba(185,55,223,0.45)]">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Courses for Free</h3>
+                  <p className="text-base text-gray-700 mb-6">It is high time for learning</p>
+                  <form  className="space-y-6">
+                  <div>
+            <input
+            type="text"
+            name="name"
+            placeholder="NAME"
+            className="w-full bg-transparent border-b border-gray-400 text-gray-800 text-sm py-5 px-0 placeholder-gray-600 placeholder-opacity-40 uppercase opacity-60 cursor-not-allowed"
+            />
           </div>
-        </div>
-      </div>
+          <div>
+            <input
+            type="text"
+            name="phone"
+            placeholder="PHONE NUMBER"
+            className="w-full bg-transparent border-b border-gray-400 text-gray-800 text-sm py-5 px-0 placeholder-gray-600 placeholder-opacity-40 uppercase opacity-60 cursor-not-allowed"
+            />
+          </div>
+          <div>
+            <input
+            type="email"
+            name="email"
+            placeholder="EMAIL ADDRESS"
+            disabled
+            className="w-full bg-transparent border-b border-gray-400 text-gray-800 text-sm py-5 px-0 placeholder-gray-600 placeholder-opacity-40 uppercase opacity-60 cursor-not-allowed"
+            />
+          </div>
 
-      {/* Modal */}
+          <div className="text-center mt-6">
+            <button
+            type="button"
+            // onClick={handleGoogleSignIn}
+            className="bg-white text-gray-800 font-semibold py-3 px-6 rounded-md shadow-lg flex items-center justify-center gap-3 mx-auto hover:bg-gray-100 transition"
+            >
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+              alt="Google"
+              className="w-5 h-5"
+            />
+            Continue with Google
+            </button>
+          </div>
+
+                  </form>
+                </div>
+                </div>
+              </div>
+              </div>
+
+              {/* Modal */}
       {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
