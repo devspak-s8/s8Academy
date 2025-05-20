@@ -9,7 +9,9 @@ import VideoSection from "../components/VideoSection";
 import PopularCourses from "../components/PopularCourses";
 import FeatureSection from "../components/FeatureSection";
 import RegistrationSection from "../components/RegistrationForm";
+import InstructorsSection from "../components/instructors-section";
 // 🔻 Footer
+import Newsletter from "../components/newsletter";
 import Footer from "../components/Footer";
 
 const CourseDetails = () => {
@@ -20,12 +22,13 @@ const CourseDetails = () => {
 
       <Features />
       <PopularCourses />
-
+      <InstructorsSection />
      
 
       <FeatureSection/>
       <RegistrationSection/>
       {/* Footer */}
+      <Newsletter />
       <Footer />
     </div>
   );

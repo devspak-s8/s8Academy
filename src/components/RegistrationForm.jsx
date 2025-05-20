@@ -53,7 +53,7 @@ const RegistrationSection = () => {
 
   return (
     <section
-      className="relative z-20 mb-[160px] bg-cover bg-center  py-40 md:py-16 lg:bg-transparent bg-purple-700 sm:bg-none"
+      className="relative z-20 mb-[160px] bg-cover bg-center  py-40 md:py-16 lg:bg-transparent sm:bg-none"
      >
       <div className="container mx-auto px-20">
         <div className="flex flex-col lg:flex-row items-end">
