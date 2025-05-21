@@ -4,12 +4,12 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import p1 from '../assets/img/popular-course/p1.jpg';
-import p2 from '../assets/img/popular-course/1000281686.jpg';
-import p3 from '../assets/img/popular-course/p2.jpg';
-import p4 from '../assets/img/popular-course/1000280167.jpg';
-import p5 from '../assets/img/popular-course/1000281629.jpg';
-import p6 from '../assets/img/popular-course/p4.jpg';
+import p1 from '../../assets/img/popular-course/p1.jpg';
+import p2 from '../../assets/img/popular-course/1000281686.jpg';
+import p3 from '../../assets/img/popular-course/p2.jpg';
+import p4 from '../../assets/img/popular-course/1000280167.jpg';
+import p5 from '../../assets/img/popular-course/1000281629.jpg';
+import p6 from '../../assets/img/popular-course/p4.jpg';
 
 import { Link } from 'react-router-dom';
 // Hardcoded course data
@@ -24,10 +24,10 @@ const courses = [
     rating: 5,
     reviews: 45,
     description: 'Become a React JS expert and build modern, scalable web applications. This course covers everything from state management to hooks and routing, with hands-on projects to strengthen your skills.'
-  
+
   },
   {
-   
+
     id: 'backend',
     image: p2,
     category: 'Programming Language',
@@ -36,7 +36,7 @@ const courses = [
     rating: 5,
     reviews: 30,
     description: 'Learn JavaScript deeply and take your skills to the next level. This course includes both front-end and back-end development, helping you build complete, scalable web applications.'
-  
+
   },
   {
     id: 3,
@@ -57,7 +57,7 @@ const courses = [
     rating: 4,
     reviews: 40,
     description: 'This course is designed for developers who want to understand and implement design principles in their applications. Learn about wireframing, prototyping, and how to create user-friendly interfaces.'
-  },{
+  }, {
     id: 5,
     image: p5,
     category: 'Backend Development',
@@ -136,14 +136,14 @@ const PopularCoursesSection = () => {
                     <p className="text-sm text-gray-800 font-semibold">{course.price}</p>
                   </div>
                   <a href="#" className="block">
-                   
-                        <Link to={`/courseDetails/${course.id}`}>
-                         <h4 className="text-xl font-light text-gray-800 hover:text-blue-600 transition">
-                      {course.title}
 
-                        </h4> 
-                        </Link>
-                
+                    <Link to={`/courseDetails/${course.id}`}>
+                      <h4 className="text-xl font-light text-gray-800 hover:text-blue-600 transition">
+                        {course.title}
+
+                      </h4>
+                    </Link>
+
                   </a>
                   <div className="flex items-center mt-4">
                     <ul className="flex space-x-1">

@@ -6,7 +6,7 @@ import IncludedItem from "./IncludedItem"
 import LessonCard from "./LessonCard"
 import { FolderIcon, DocumentIcon, DevicesIcon, CertificateIcon } from "./CourseIcons"
 
-export default function CourseDetails() {
+export default function CourseDescription({ course }) {
   const [expanded, setExpanded] = useState(false)
 
   return (
@@ -21,8 +21,8 @@ export default function CourseDetails() {
 
       <h2 className="text-2xl font-bold mb-4">Course description</h2>
       <p className="text-gray-700 mb-2">
-        As a product manager, you serve as the diplomat of the product team...
         <button className="text-blue-600 font-medium ml-1">Read more</button>
+        
       </p>
 
       <h2 className="text-2xl font-bold mt-10 mb-4">Courses In This Program</h2>

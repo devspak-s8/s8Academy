@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import bannerImg from "../assets/img/header-img.png";
-import bgImg from "../assets/img/home-banner-bg.png";
+import bannerImg from "../../assets/img/header-img.png";
+import bgImg from "../../assets/img/home-banner-bg.png";
 const navigation = [
   { name: "Courses", href: "/CourseDetails" },
   { name: "Instructors", href: "/instructors" },

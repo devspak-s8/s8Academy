@@ -1,10 +1,10 @@
 "use client"
 
 import { ChevronRight } from "lucide-react"
-import i1 from "../assets/img/i1.jpg";
-import i2 from "../assets/img/i2.jpg";
-import i3 from "../assets/img/i3.jpg";
-import i4 from "../assets/img/i4.jpg";
+import i1 from "../../assets/img/i1.jpg";
+import i2 from "../../assets/img/i2.jpg";
+import i3 from "../../assets/img/i3.jpg";
+import i4 from "../../assets/img/i4.jpg";
 
 
 export default function InstructorsSection() {

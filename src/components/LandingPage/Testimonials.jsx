@@ -3,11 +3,11 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import testimonialImg1 from '../assets/img/testimonial/t1.jpg';
-import testimonialImg2 from '../assets/img/testimonial/t2.jpg';
-import testimonialImg3 from '../assets/img/testimonial/t1.jpg';
-import testimonialImg4 from '../assets/img/testimonial/t2.jpg';
-import quoteimg from '../assets/img/quote.png';
+import testimonialImg1 from '../../assets/img/testimonial/t1.jpg';
+import testimonialImg2 from '../../assets/img/testimonial/t2.jpg';
+import testimonialImg3 from '../../assets/img/testimonial/t1.jpg';
+import testimonialImg4 from '../../assets/img/testimonial/t2.jpg';
+import quoteimg from '../../assets/img/quote.png';
 // Hardcoded testimonial data
 const testimonials = [
   {

@@ -6,8 +6,8 @@ import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 
-import vidImg from '../assets/img/video-area-bg.png';
-import vidImg1 from '../assets/img/video-img.jpg';
+import vidImg from '../../assets/img/video-area-bg.png';
+import vidImg1 from '../../assets/img/video-img.jpg';
 // Bind modal to app element for accessibility
 Modal.setAppElement('#root');
 
