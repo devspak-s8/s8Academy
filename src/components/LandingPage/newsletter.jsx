@@ -20,7 +20,7 @@ export default function Newsletter() {
           <h2 className="text-3xl md:text-4xl font-bold text-black">
             Find Out About The Latest Courses With The
             <span className="block">
-              <span className="text-blue-600">Academy</span> Newsletter
+              <span className="text-purple-500">Academy</span> Newsletter
             </span>
           </h2>
         </div>
@@ -33,7 +33,7 @@ export default function Newsletter() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="flex-grow px-4 py-3 rounded-md border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-grow px-4 py-3 rounded-md border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
             <button
               type="submit"
@@ -46,7 +46,7 @@ export default function Newsletter() {
       </div>
 
       {/* Blue curved shape */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-600 rounded-l-full -mr-20 z-0"></div>
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-purple-500 rounded-l-full -mr-20 z-0"></div>
     </div>
   )
 }

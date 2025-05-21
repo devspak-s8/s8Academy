@@ -51,9 +51,8 @@ export default function Example2() {
       >
         <nav
           aria-label="Global"
-          className={`flex items-center justify-between px-6 lg:px-8 transition-[padding] duration-500 ease-in-out ${
-            isExpanded ? "py-6" : "py-3"
-          }`}
+          className={`flex items-center justify-between px-6 lg:px-8 transition-[padding] duration-500 ease-in-out ${isExpanded ? "py-6" : "py-3"
+            }`}
         >
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
@@ -160,9 +159,10 @@ export default function Example2() {
         </div>
 
         {/* Flex Layout for Left + Right */}
-        <div className="mx-auto max-w-7xl py-32 sm:py-20 lg:py-2 flex flex-col lg:flex-row items-center gap-8">
+        {/* HERO SECTION */}
+        <div className="mx-auto max-w-7xl py-20 sm:py-16 lg:py-12 flex flex-col lg:flex-row items-center gap-8">
           {/* Left Side Text Block */}
-          <div className="w-full lg:w-1/2 mb-32  text-left">
+          <div className="w-full lg:w-1/2 mb-10 text-left">
             <div className="mb-6 hidden sm:flex sm:justify-start">
               <div className="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                 Announcing our next round of funding.
@@ -172,18 +172,18 @@ export default function Example2() {
               </div>
             </div>
             <h1
-              style={{ fontSize: "48px", lineHeight: "1em" }}
-              className="font-bold tracking-tight text-white sm:text-6xl"
+              style={{ fontSize: "36px", lineHeight: "1.1em" }}
+              className="font-bold tracking-tight text-white sm:text-5xl"
             >
               Level up with future-ready skills
             </h1>
             <p
               style={{ fontSize: "15px" }}
-              className="mt-6 lg:w-xl  text-white sm:text-xl"
+              className="mt-6 text-white sm:text-xl"
             >
               Fuel your growth with future-ready skills, taught through hands-on
-              projects, real-world scenarios, and expert-driven guidance —
-              because S8Academy doesn’t just teach, we prepare you to lead.
+              projects, real-world scenarios, and expert-driven guidance — because
+              S8Academy doesn’t just teach, we prepare you to lead.
             </p>
             <div className="mt-4 flex gap-x-6">
               <a
@@ -198,10 +198,9 @@ export default function Example2() {
             </div>
           </div>
 
-          {/* Right Side Placeholder (replace with anything: image, video, widget, etc.) */}
-          <div className="w-full lg:w-1/2 flex justify-center">
-            {/* Example: You could replace this with an <img src="..." /> or a custom component */}
-            <div className="h-[510px] w-[510px]  flex items-center justify-center text-gray-500">
+          {/* Right Side Image - Hidden on small screens */}
+          <div className="w-full lg:w-1/2 flex justify-center hidden sm:flex">
+            <div className="h-[400px] w-[400px] flex items-center justify-center text-gray-500">
               <img
                 src={bannerImg}
                 alt="Banner"
@@ -210,6 +209,7 @@ export default function Example2() {
             </div>
           </div>
         </div>
+
 
         {/* Bottom blurred background shape */}
         <div

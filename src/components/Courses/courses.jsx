@@ -21,8 +21,9 @@ export default function CourseDescription({ course }) {
 
       <h2 className="text-2xl font-bold mb-4">Course description</h2>
       <p className="text-gray-700 mb-2">
+         {course.description}
         <button className="text-blue-600 font-medium ml-1">Read more</button>
-        
+
       </p>
 
       <h2 className="text-2xl font-bold mt-10 mb-4">Courses In This Program</h2>
