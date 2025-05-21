@@ -2,10 +2,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import coursesData from "../data/coursesData"; // path to your course data JSON or JS file
-import FooterSection from "../components/Footer";
-import CoursesSection from "../components/Cousredetailing"; // corrected typo
-import CourseBanner from "../components/CourseDetailsBanner";
-
+import FooterSection from "../components/LandingPage/Footer";
+import CoursesSection from "../components/Courses/Cousredetailing"; // corrected typo
+import CourseBanner from "../components/Courses/Banner";
+import CourseDetails2 from "@/components/Courses/courses";
 const CourseDetails = () => {
   const { id } = useParams();
 
@@ -25,6 +25,7 @@ const CourseDetails = () => {
     <div>
       <CourseBanner course={course} />
       <CoursesSection/>
+      <CourseDetails2/>
       <FooterSection />
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star } from 'lucide-react'; // if you're using it like this
+import { Star, ChevronRight, Search } from 'lucide-react'; // if you're using it like this
 import { Badge } from '@/components/ui/badge'; // adjust import if needed
 import { Button } from '@/components/ui/button'; // adjust import if needed
 
@@ -9,8 +9,28 @@ function CourseBanner({ course }) {
   }
 
   return (
-    <div className="min-h-screen bg-indigo-950 text-white">
+    <div className="min-h-screen pt-4 bg-indigo-950 text-white">
       {/* Navigation */}
+      <nav className=" backdrop-blur-sm py-4 ">
+        <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between flex-wrap gap-y-4">
+          <span className="text-gray-300 hover:text-white cursor-pointer">All courses</span>
+          <ChevronRight className="h-4 w-4 mx-2 text-gray-300" />
+          <span className="text-gray-300 hover:text-white cursor-pointer">Web Design</span>
+          <ChevronRight className="h-4 w-4 mx-2 text-gray-300" />
+          <span className="text-gray-300">Product Design</span>
+
+          {/* Search bar */}
+          <div className="ml-auto relative">
+            <input
+              type="text"
+              className="bg-white/10 border border-white/20 rounded-full py-1 px-4 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-white/30"
+              placeholder="Search..."
+            />
+            <Search className="h-4 w-4 absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-300" />
+          </div>
+        </div>
+      </nav>
+
 
       <main className="px-6 py-4 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row gap-8">
@@ -69,7 +89,7 @@ function CourseBanner({ course }) {
 
           {/* Right Column */}
           <div className="md:w-1/2 flex items-center justify-center">
-        
+
           </div>
         </div>
       </main>
