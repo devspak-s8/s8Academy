@@ -1,416 +1,378 @@
-import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
+"use client";
+
+import { useState } from "react";
+import {
+  Home,
+  Search,
+  ShoppingBag,
+  User,
+  Activity,
+  FileText,
+  Twitter,
+  Send,
+  BookOpen,
+  Star,
+  Bell,
+  Settings,
+  Copy,
+  MapPin,
+  Sun,
+  MessageCircle,
+  Archive,
+  BarChart,
+  ClipboardList,
+  LayoutDashboard,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+// eslint-disable-next-line no-unused-vars
+import { motion, AnimatePresence } from "framer-motion";
+import { useSwipeable } from "react-swipeable";
+
+const SidebarItem = ({ icon, label, active }) => (
+  <div
+    className={`flex items-center gap-3 px-3 py-2 rounded-md cursor-pointer ${active ? "bg-blue-100 text-blue-700 font-semibold" : "hover:bg-gray-100"
+      }`}
+  >
+    {icon}
+    <span>{label}</span>
+  </div>
+);
+
+const BalanceTag = ({ label, color, icon }) => (
+  <div
+    className={`px-3 py-1 text-sm rounded-full flex items-center gap-2 ${color === "blue" ? "bg-blue-100 text-blue-700" : "bg-red-100 text-red-700"
+      }`}
+  >
+    {icon === "circle" && <div className="w-2 h-2 bg-current rounded-full" />}
+    {label}
+  </div>
+);
+
+const LanguageSelector = () => (
+  <select className="border rounded-md px-2 py-1 text-sm">
+    <option>EN</option>
+    <option>FR</option>
+    <option>ES</option>
+  </select>
+);
+
+const tabData = [
+  { value: "profile", label: "Dashboard", icon: <LayoutDashboard size={16} /> },
+  { value: "courses", label: "Courses", icon: <BookOpen size={16} /> },
+  { value: "assignments", label: "Assignments", icon: <ClipboardList size={16} /> },
+  { value: "exams", label: "Exams", icon: <FileText size={16} /> },
+  { value: "progress", label: "Progress", icon: <BarChart size={16} /> },
+  { value: "discussions", label: "Discussions", icon: <MessageCircle size={16} /> },
+  { value: "settings", label: "Settings", icon: <Settings size={16} /> },
+];
 
 export default function ProfilePage() {
+  const [username, setUsername] = useState("username123");
+  const [bio, setBio] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
+
+  const handleImageUpload = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setProfileImage(URL.createObjectURL(e.target.files[0]));
+    }
+  };
+
+  const removeImage = () => {
+    setProfileImage(null);
+  };
+  const [activeTab, setActiveTab] = useState("profile");
+
+  const index = tabData.findIndex((t) => t.value === activeTab);
+
+  const handleSwipe = (dir) => {
+    if (dir === "LEFT" && index < tabData.length - 1) {
+      setActiveTab(tabData[index + 1].value);
+    } else if (dir === "RIGHT" && index > 0) {
+      setActiveTab(tabData[index - 1].value);
+    }
+  };
+
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleSwipe("LEFT"),
+    onSwipedRight: () => handleSwipe("RIGHT"),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
   return (
-    <form>
-      <div className="space-y-12 px-20">
-        <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base/7 font-semibold text-gray-900">Profile</h2>
-          <p className="mt-1 text-sm/6 text-gray-600">
-            This information will be displayed publicly so be careful what you share.
-          </p>
-
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="sm:col-span-4">
-              <label htmlFor="username" className="block text-sm/6 font-medium text-gray-900">
-                Username
-              </label>
-              <div className="mt-2">
-                <div className="flex items-center rounded-md bg-white pl-3 outline-1 -outline-offset-1 outline-gray-300 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-600">
-                  <div className="shrink-0 text-base text-gray-500 select-none sm:text-sm/6">workcation.com/</div>
-                  <input
-                    id="username"
-                    name="username"
-                    type="text"
-                    placeholder="janesmith"
-                    className="block min-w-0 grow py-1.5 pr-3 pl-1 text-base text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm/6"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-span-full">
-              <label htmlFor="about" className="block text-sm/6 font-medium text-gray-900">
-                About
-              </label>
-              <div className="mt-2">
-                <textarea
-                  id="about"
-                  name="about"
-                  rows={3}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                  defaultValue={''}
-                />
-              </div>
-              <p className="mt-3 text-sm/6 text-gray-600">Write a few sentences about yourself.</p>
-            </div>
-
-            <div className="col-span-full">
-              <label htmlFor="photo" className="block text-sm/6 font-medium text-gray-900">
-                Photo
-              </label>
-              <div className="mt-2 flex items-center gap-x-3">
-                <UserCircleIcon aria-hidden="true" className="size-12 text-gray-300" />
-                <button
-                  type="button"
-                  className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
-                >
-                  Change
-                </button>
-              </div>
-            </div>
-
-            <div className="col-span-full">
-              <label htmlFor="cover-photo" className="block text-sm/6 font-medium text-gray-900">
-                Cover photo
-              </label>
-              <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                <div className="text-center">
-                  <PhotoIcon aria-hidden="true" className="mx-auto size-12 text-gray-300" />
-                  <div className="mt-4 flex text-sm/6 text-gray-600">
-                    <label
-                      htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:outline-hidden hover:text-indigo-500"
-                    >
-                      <span>Upload a file</span>
-                      <input id="file-upload" name="file-upload" type="file" className="sr-only" />
-                    </label>
-                    <p className="pl-1">or drag and drop</p>
-                  </div>
-                  <p className="text-xs/5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
-                </div>
-              </div>
-            </div>
+    <div className="flex min-h-screen bg-white">
+      {/* Sidebar */}
+      <div className="w-[220px] border-r p-4 flex flex-col">
+        <div className="flex items-center gap-2 mb-8">
+          <div className="bg-blue-600 text-white p-2 rounded-md font-bold">
+            S
           </div>
+          <span className="font-bold text-lg">S8ACADEMY</span>
         </div>
 
-        <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base/7 font-semibold text-gray-900">Personal Information</h2>
-          <p className="mt-1 text-sm/6 text-gray-600">Use a permanent address where you can receive mail.</p>
+        <nav className="space-y-1 flex-1">
+          <SidebarItem icon={<Home size={18} />} label="Dashboard" />
+          <SidebarItem icon={<Search size={18} />} label="Browse Courses" />
+          <SidebarItem icon={<BookOpen size={18} />} label="My Courses" />
+          <SidebarItem icon={<User size={18} />} label="Profile" active />
+          <div className="pt-4" />
+          <SidebarItem icon={<Activity size={18} />} label="Progress" />
+          <SidebarItem icon={<FileText size={18} />} label="Assignments" />
+          <SidebarItem icon={<FileText size={18} />} label="Exams" />
+          <div className="pt-4" />
+          <SidebarItem icon={<Send size={18} />} label="Discussions" />
+          <SidebarItem icon={<BookOpen size={18} />} label="Resources" />
+          <SidebarItem
+            icon={<span className="font-bold text-[13px]">S8</span>}
+            label="About S8Academy"
+          />
+        </nav>
 
-          <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-            <div className="sm:col-span-3">
-              <label htmlFor="first-name" className="block text-sm/6 font-medium text-gray-900">
-                First name
-              </label>
-              <div className="mt-2">
-                <input
-                  id="first-name"
-                  name="first-name"
-                  type="text"
-                  autoComplete="given-name"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-3">
-              <label htmlFor="last-name" className="block text-sm/6 font-medium text-gray-900">
-                Last name
-              </label>
-              <div className="mt-2">
-                <input
-                  id="last-name"
-                  name="last-name"
-                  type="text"
-                  autoComplete="family-name"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-4">
-              <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-3">
-              <label htmlFor="country" className="block text-sm/6 font-medium text-gray-900">
-                Country
-              </label>
-              <div className="mt-2 grid grid-cols-1">
-                <select
-                  id="country"
-                  name="country"
-                  autoComplete="country-name"
-                  className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                >
-                  <option>United States</option>
-                  <option>Canada</option>
-                  <option>Mexico</option>
-                </select>
-                <ChevronDownIcon
-                  aria-hidden="true"
-                  className="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
-                />
-              </div>
-            </div>
-
-            <div className="col-span-full">
-              <label htmlFor="street-address" className="block text-sm/6 font-medium text-gray-900">
-                Street address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="street-address"
-                  name="street-address"
-                  type="text"
-                  autoComplete="street-address"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2 sm:col-start-1">
-              <label htmlFor="city" className="block text-sm/6 font-medium text-gray-900">
-                City
-              </label>
-              <div className="mt-2">
-                <input
-                  id="city"
-                  name="city"
-                  type="text"
-                  autoComplete="address-level2"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2">
-              <label htmlFor="region" className="block text-sm/6 font-medium text-gray-900">
-                State / Province
-              </label>
-              <div className="mt-2">
-                <input
-                  id="region"
-                  name="region"
-                  type="text"
-                  autoComplete="address-level1"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-
-            <div className="sm:col-span-2">
-              <label htmlFor="postal-code" className="block text-sm/6 font-medium text-gray-900">
-                ZIP / Postal code
-              </label>
-              <div className="mt-2">
-                <input
-                  id="postal-code"
-                  name="postal-code"
-                  type="text"
-                  autoComplete="postal-code"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base/7 font-semibold text-gray-900">Notifications</h2>
-          <p className="mt-1 text-sm/6 text-gray-600">
-            We'll always let you know about important changes, but you pick what else you want to hear about.
-          </p>
-
-          <div className="mt-10 space-y-10">
-            <fieldset>
-              <legend className="text-sm/6 font-semibold text-gray-900">By email</legend>
-              <div className="mt-6 space-y-6">
-                <div className="flex gap-3">
-                  <div className="flex h-6 shrink-0 items-center">
-                    <div className="group grid size-4 grid-cols-1">
-                      <input
-                        defaultChecked
-                        id="comments"
-                        name="comments"
-                        type="checkbox"
-                        aria-describedby="comments-description"
-                        className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
-                      />
-                      <svg
-                        fill="none"
-                        viewBox="0 0 14 14"
-                        className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25"
-                      >
-                        <path
-                          d="M3 8L6 11L11 3.5"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-checked:opacity-100"
-                        />
-                        <path
-                          d="M3 7H11"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-indeterminate:opacity-100"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text-sm/6">
-                    <label htmlFor="comments" className="font-medium text-gray-900">
-                      Comments
-                    </label>
-                    <p id="comments-description" className="text-gray-500">
-                      Get notified when someones posts a comment on a posting.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <div className="flex h-6 shrink-0 items-center">
-                    <div className="group grid size-4 grid-cols-1">
-                      <input
-                        id="candidates"
-                        name="candidates"
-                        type="checkbox"
-                        aria-describedby="candidates-description"
-                        className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
-                      />
-                      <svg
-                        fill="none"
-                        viewBox="0 0 14 14"
-                        className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25"
-                      >
-                        <path
-                          d="M3 8L6 11L11 3.5"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-checked:opacity-100"
-                        />
-                        <path
-                          d="M3 7H11"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-indeterminate:opacity-100"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text-sm/6">
-                    <label htmlFor="candidates" className="font-medium text-gray-900">
-                      Candidates
-                    </label>
-                    <p id="candidates-description" className="text-gray-500">
-                      Get notified when a candidate applies for a job.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-3">
-                  <div className="flex h-6 shrink-0 items-center">
-                    <div className="group grid size-4 grid-cols-1">
-                      <input
-                        id="offers"
-                        name="offers"
-                        type="checkbox"
-                        aria-describedby="offers-description"
-                        className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
-                      />
-                      <svg
-                        fill="none"
-                        viewBox="0 0 14 14"
-                        className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-disabled:stroke-gray-950/25"
-                      >
-                        <path
-                          d="M3 8L6 11L11 3.5"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-checked:opacity-100"
-                        />
-                        <path
-                          d="M3 7H11"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="opacity-0 group-has-indeterminate:opacity-100"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="text-sm/6">
-                    <label htmlFor="offers" className="font-medium text-gray-900">
-                      Offers
-                    </label>
-                    <p id="offers-description" className="text-gray-500">
-                      Get notified when a candidate accepts or rejects an offer.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-
-            <fieldset>
-              <legend className="text-sm/6 font-semibold text-gray-900">Push notifications</legend>
-              <p className="mt-1 text-sm/6 text-gray-600">These are delivered via SMS to your mobile phone.</p>
-              <div className="mt-6 space-y-6">
-                <div className="flex items-center gap-x-3">
-                  <input
-                    defaultChecked
-                    id="push-everything"
-                    name="push-notifications"
-                    type="radio"
-                    className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
-                  />
-                  <label htmlFor="push-everything" className="block text-sm/6 font-medium text-gray-900">
-                    Everything
-                  </label>
-                </div>
-                <div className="flex items-center gap-x-3">
-                  <input
-                    id="push-email"
-                    name="push-notifications"
-                    type="radio"
-                    className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
-                  />
-                  <label htmlFor="push-email" className="block text-sm/6 font-medium text-gray-900">
-                    Same as email
-                  </label>
-                </div>
-                <div className="flex items-center gap-x-3">
-                  <input
-                    id="push-nothing"
-                    name="push-notifications"
-                    type="radio"
-                    className="relative size-4 appearance-none rounded-full border border-gray-300 bg-white before:absolute before:inset-1 before:rounded-full before:bg-white not-checked:before:hidden checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden"
-                  />
-                  <label htmlFor="push-nothing" className="block text-sm/6 font-medium text-gray-900">
-                    No push notifications
-                  </label>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-        </div>
+        <div className="text-xs text-gray-400 mt-auto">© Mavia 2021</div>
       </div>
 
-      <div className="mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" className="text-sm/6 font-semibold text-gray-900">
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Save
-        </button>
+      {/* Main Content */}
+      <div className="flex-1">
+        <header className="border-b">
+          <div className="flex justify-between items-center p-4">
+            <h1 className="text-xl font-bold">Student Dashboard</h1>
+            <div className="flex items-center gap-3">
+              <BalanceTag label="5 Courses" color="blue" />
+              <BalanceTag label="2 Assignments Due" color="red" />
+              <BalanceTag label="92% Progress" color="blue" icon="circle" />
+              <LanguageSelector />
+
+              <Button variant="ghost" size="icon">
+                <Sun size={20} />
+              </Button>
+
+              <div className="relative">
+                <Button variant="ghost" size="icon">
+                  <Bell size={20} />
+                </Button>
+                <span className="absolute top-1 right-1 w-2 h-2 bg-green-500 rounded-full" />
+              </div>
+
+              <div className="flex items-center gap-2 bg-gray-100 rounded-full px-3 py-1">
+                <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs">
+                  S
+                </div>
+                <span className="text-sm">Sulayman</span>
+                <span className="text-xs text-gray-500 truncate max-w-[60px]">
+                  #STU00123
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Tabs */}
+          <Tabs
+            defaultValue="profile"
+            value={activeTab}
+            onValueChange={setActiveTab}
+            className="w-full"
+          >
+            {/* Tab Navigation */}
+            <TabsList className="w-full overflow-x-auto flex-nowrap border-b mb-0 bg-white scrollbar-hide">
+              {tabData.map((tab) => (
+                <TabsTrigger
+                  key={tab.value}
+                  value={tab.value}
+                  className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:text-blue-600 flex items-center gap-2 transition-all"
+                >
+                  {tab.icon}
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {/* Swipeable Content */}
+            <div {...swipeHandlers} className="p-2 relative w-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute w-full"
+                >
+                  {activeTab === "profile"}
+                  {activeTab === "property"}
+                  {activeTab === "ledger"}
+                  {activeTab === "notifications"}
+                  {activeTab === "favorites"}
+                  {activeTab === "settings"}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <TabsContent value="profile" className="p-2 space-y-6">
+              {/* Public Profile Card */}
+              <div className="border rounded-xl p-5 shadow-sm bg-white space-y-4">
+                <div>
+                  <h2 className="text-lg font-semibold text-gray-900">Public Profile</h2>
+                  <p className="text-sm text-gray-500">
+                    Share your public profile link with others to showcase your activity.
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex-1 px-4 py-2 bg-gray-100 border text-sm rounded-md text-gray-700 truncate">
+                    https://app.mavia.com/profile/{username}
+                  </div>
+                  <Button variant="outline" size="icon" className="shrink-0">
+                    <Copy size={18} />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    className="flex items-center gap-1 text-blue-600 hover:text-blue-700"
+                  >
+                    <MapPin size={16} />
+                    View location
+                  </Button>
+                </div>
+              </div>
+
+              {/* Profile Picture Card */}
+              <div className="border rounded-xl p-5 shadow-sm bg-white space-y-4">
+                <div>
+                  <h2 className="text-lg font-semibold text-gray-900">Profile Picture</h2>
+                  <p className="text-sm text-gray-500">
+                    Upload your avatar or a picture of yourself to personalize your profile.
+                  </p>
+                </div>
+                <div className="flex items-center gap-6">
+                  <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
+                    {profileImage ? (
+                      <img
+                        src={profileImage}
+                        alt="Profile"
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-3xl text-blue-600 font-bold">M</span>
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Input type="file" onChange={handleImageUpload} />
+                    {profileImage && (
+                      <Button variant="destructive" size="sm" onClick={removeImage}>
+                        Remove
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Edit Info Card */}
+              <div className="border rounded-xl p-5 shadow-sm bg-white space-y-6">
+                <div>
+                  <h2 className="text-lg font-semibold text-gray-900">Edit Info</h2>
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Username
+                    </label>
+                    <Input
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Bio</label>
+                    <Textarea
+                      value={bio}
+                      onChange={(e) => setBio(e.target.value)}
+                      rows={4}
+                      placeholder="Tell us something about yourself..."
+                    />
+                  </div>
+                  <div>
+                    <Button className="mt-2">Save Changes</Button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Added Academic & Tech Course Registration Section */}
+              <div className="border rounded-xl p-5 shadow-sm bg-white space-y-6">
+                <h2 className="text-lg font-semibold text-gray-900">
+                  Academic & Course Registration Details
+                </h2>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Highest Level of Education
+                    </label>
+                    <select className="w-full border-gray-300 rounded-md p-2">
+                      <option value="">Select your highest level</option>
+                      <option value="secondary">Secondary School</option>
+                      <option value="diploma">Diploma</option>
+                      <option value="undergraduate">Undergraduate</option>
+                      <option value="postgraduate">Postgraduate</option>
+                      <option value="self_taught">Self-taught</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Institution (if any)
+                    </label>
+                    <Input placeholder="e.g., Lagos State University or N/A" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Field of Study / Interest
+                    </label>
+                    <Input placeholder="e.g., Computer Science, Software Engineering" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Programming Languages / Tools You Know
+                    </label>
+                    <Textarea
+                      rows={3}
+                      placeholder="e.g., JavaScript, Python, React, Git"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Current Experience Level
+                    </label>
+                    <select className="w-full border-gray-300 rounded-md p-2">
+                      <option value="">Select your experience level</option>
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="advanced">Advanced</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Learning Goals & Motivation
+                    </label>
+                    <Textarea
+                      rows={4}
+                      placeholder="Why are you taking this course? What do you hope to achieve?"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Certifications or Portfolio Links (if any)
+                    </label>
+                    <Textarea
+                      rows={3}
+                      placeholder="e.g., GitHub: github.com/yourusername or certificates"
+                    />
+                  </div>
+                </div>
+              </div>
+            </TabsContent>
+
+          </Tabs>
+        </header>
       </div>
-    </form>
-  )
+    </div>
+  );
 }

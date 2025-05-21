@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom';
 
 // Bind modal to app element for accessibility
 Modal.setAppElement('#root');
@@ -50,6 +51,12 @@ const RegistrationSection = () => {
   //   setModalIsOpen(false);
   //   setModalMessage('');
   // };
+const navigate = useNavigate();
+
+
+const handleRedirect = () => {
+  navigate('/ProfilePage');
+};
 
   return (
     <section
@@ -106,12 +113,15 @@ const RegistrationSection = () => {
             <button
             type="button"
             // onClick={handleGoogleSignIn}
+              onClick={handleRedirect}
+
             className="bg-white text-gray-800 font-semibold py-3 px-6 rounded-md shadow-lg flex items-center justify-center gap-3 mx-auto hover:bg-gray-100 transition"
             >
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
               alt="Google"
               className="w-5 h-5"
+              
             />
             Continue with Google
             </button>
