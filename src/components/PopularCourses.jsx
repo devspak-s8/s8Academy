@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 // Hardcoded course data
 const courses = [
   {
-    id: 1,
+    id: 'frontend',
     image: p1, // Replace with your image or placeholder
 
     category: 'Web Development',
@@ -138,9 +138,7 @@ const PopularCoursesSection = () => {
                     <h4 className="text-xl font-light text-gray-800 hover:text-blue-600 transition">
                       {course.title}
 
-                      <Link to="/courseDetails">
-                      
-                      </Link>
+                     <Link to={`/courseDetails/${course.id}`}>{course.title}</Link>
                     </h4>
                   </a>
                   <div className="flex items-center mt-4">
