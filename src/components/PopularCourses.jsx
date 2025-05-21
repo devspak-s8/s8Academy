@@ -27,7 +27,8 @@ const courses = [
   
   },
   {
-    id: 2,
+   
+    id: 'backend',
     image: p2,
     category: 'Programming Language',
     price: '$150',
@@ -135,11 +136,14 @@ const PopularCoursesSection = () => {
                     <p className="text-sm text-gray-800 font-semibold">{course.price}</p>
                   </div>
                   <a href="#" className="block">
-                    <h4 className="text-xl font-light text-gray-800 hover:text-blue-600 transition">
+                   
+                        <Link to={`/courseDetails/${course.id}`}>
+                         <h4 className="text-xl font-light text-gray-800 hover:text-blue-600 transition">
                       {course.title}
 
-                     <Link to={`/courseDetails/${course.id}`}>{course.title}</Link>
-                    </h4>
+                        </h4> 
+                        </Link>
+                
                   </a>
                   <div className="flex items-center mt-4">
                     <ul className="flex space-x-1">

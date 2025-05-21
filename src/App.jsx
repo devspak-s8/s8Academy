@@ -7,7 +7,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/CourseDetails" element={<CourseDetails/>} />
+        <Route path="/courseDetails/:id" element={<CourseDetails/>} />
         <Route path="/ProfilePage" element={<ProfilePage/>} />
         
         {/* Add more pages here as needed */}
