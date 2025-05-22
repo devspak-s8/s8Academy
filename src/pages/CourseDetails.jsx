@@ -3,7 +3,6 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import coursesData from "../data/coursesData"; // path to your course data JSON or JS file
 import FooterSection from "../components/LandingPage/Footer";
-import CoursesSection from "../components/Courses/Cousredetailing"; // corrected typo
 import CourseBanner from "../components/Courses/Banner";
 import CourseDetails2 from "@/components/Courses/courses";
 const CourseDetails = () => {
@@ -24,12 +23,10 @@ const CourseDetails = () => {
   return (
     <div>
       <CourseBanner course={course} />
-      <CoursesSection/>
-      <CourseDetails2/>
+      <CourseDetails2 course={course} />
       <FooterSection />
     </div>
   );
 };
 
 export default CourseDetails;
-

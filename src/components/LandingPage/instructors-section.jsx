@@ -1,10 +1,12 @@
 "use client"
 
 import { ChevronRight } from "lucide-react"
-import i1 from "../../assets/img/i1.jpg";
-import i2 from "../../assets/img/i2.jpg";
-import i3 from "../../assets/img/i3.jpg";
-import i4 from "../../assets/img/i4.jpg";
+import p1 from '../../assets/img/popular-course/p1.jpg';
+import p2 from '../../assets/img/popular-course/1000281686.jpg';
+import p3 from '../../assets/img/popular-course/p2.jpg';
+import p4 from '../../assets/img/popular-course/1000280167.jpg';
+import p5 from '../../assets/img/popular-course/1000281629.jpg';
+import p6 from '../../assets/img/popular-course/p4.jpg';
 
 
 export default function InstructorsSection() {
@@ -13,37 +15,37 @@ export default function InstructorsSection() {
     id: 1,
     name: "Jon Kantner",
     role: "Designer",
-    image: i1,
+    image: p1,
   },
   {
     id: 2,
     name: "Debbie LaChusa",
     role: "SEO",
-    image: i2,
+    image: p2,
   },
   {
     id: 3,
     name: "Edwin Diaz",
     role: "Composer",
-    image: i3,
+    image: p3,
   },
   {
     id: 4,
     name: "Cassie Evans",
     role: "Photographer",
-    image: i4,
+    image: p4,
   },
   {
     id: 5,
     name: "Erich Andreas",
     role: "Programmer",
-    image: i1, // reuse or add new images as needed
+    image: p5, // reuse or add new images as needed
   },
   {
     id: 6,
     name: "Jason Allen",
     role: "Accounting",
-    image: i2,
+    image: p6,
   },
 ];
 
@@ -93,26 +95,27 @@ export default function InstructorsSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {instructors.map((instructor) => (
-            <div key={instructor.id} className="bg-white rounded-xl overflow-hidden shadow-lg">
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={`/placeholder.svg?height=300&width=400`}
-                  alt={instructor.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-4 flex justify-between items-center">
-                <h3 className="font-medium text-lg">{instructor.name}</h3>
-                <span className="text-gray-600 text-sm">{instructor.role}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {instructors.map((instructor) => (
+    <div key={instructor.id} className="bg-white rounded-xl overflow-hidden shadow-lg">
+      <div className="aspect-[4/3] overflow-hidden">
+        <img
+          src={instructor.image}   // <-- This will load the real image
+          alt={instructor.name}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="p-4 flex justify-between items-center">
+        <h3 className="font-medium text-lg">{instructor.name}</h3>
+        <span className="text-gray-600 text-sm">{instructor.role}</span>
+      </div>
+    </div>
+  ))}
+</div>
+
 
         {/* Mobile instructor count badge */}
-        <div className="absolute top-24 right-12 md:hidden bg-white text-black text-sm font-medium py-1 px-3 rounded-full">
+        <div className="absolute top-24 right-12 md:hidden bg-black  text-black text-sm font-medium py-1 px-3 rounded-full">
           54 Instructor
         </div>
       </div>
