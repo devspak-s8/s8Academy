@@ -4,50 +4,35 @@ import { ChevronRight } from "lucide-react"
 import p1 from '../../assets/img/popular-course/p1.jpg';
 import p2 from '../../assets/img/popular-course/1000281686.jpg';
 import p3 from '../../assets/img/popular-course/p2.jpg';
-import p4 from '../../assets/img/popular-course/1000280167.jpg';
-import p5 from '../../assets/img/popular-course/1000281629.jpg';
-import p6 from '../../assets/img/popular-course/p4.jpg';
 
 
 export default function InstructorsSection() {
- const instructors = [
-  {
-    id: 1,
-    name: "Jon Kantner",
-    role: "Designer",
-    image: p1,
-  },
-  {
-    id: 2,
-    name: "Debbie LaChusa",
-    role: "SEO",
-    image: p2,
-  },
-  {
-    id: 3,
-    name: "Edwin Diaz",
-    role: "Composer",
-    image: p3,
-  },
-  {
-    id: 4,
-    name: "Cassie Evans",
-    role: "Photographer",
-    image: p4,
-  },
-  {
-    id: 5,
-    name: "Erich Andreas",
-    role: "Programmer",
-    image: p5, // reuse or add new images as needed
-  },
-  {
-    id: 6,
-    name: "Jason Allen",
-    role: "Accounting",
-    image: p6,
-  },
-];
+  const articles = [
+    {
+      id: 1,
+      title: "Top 10 Tips for Effective Online Learning",
+      summary: "Master your virtual classroom experience with these proven strategies for staying focused and motivated.",
+      date: "May 10, 2025",
+      author: "Sulayman TechPro",
+      image: p1, // Replace with your image import or URL
+    },
+    {
+      id: 2,
+      title: "How to Build a Strong Coding Foundation",
+      summary: "Step-by-step guide to getting started with programming and making your first projects count.",
+      date: "April 22, 2025",
+      author: "Sulayman TechPro",
+      image: p2,
+    },
+    {
+      id: 3,
+      title: "The Future of Education: Trends to Watch",
+      summary: "Explore the innovations reshaping education and how you can stay ahead in your learning journey.",
+      date: "March 15, 2025",
+      author: "Sulayman TechPro",
+      image: p3,
+    },
+  ];
 
   return (
     <section className="relative py-32 px-10 overflow-hidden">
@@ -81,37 +66,35 @@ export default function InstructorsSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex justify-between items-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="text-purple-500">Best</span> <span className="text-black ">Instructors</span>
+            <span className="text-purple-500">Featured</span> <span className="text-black">Articles</span>
           </h2>
 
           <div className="flex items-center">
             <div className="bg-white text-black text-sm font-medium py-1 px-3 rounded-full mr-6 hidden md:block">
-              54 Instructor
+              12 Articles
             </div>
-            <a href="#" className="flex items-center text-white group">
-              <span className="mr-2">All Instructors</span>
+            <a href="/blog" className="flex items-center text-black group">
+              <span className="mr-2">See All</span>
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  {instructors.map((instructor) => (
-    <div key={instructor.id} className="bg-white rounded-xl overflow-hidden shadow-lg">
-      <div className="aspect-[4/3] overflow-hidden">
-        <img
-          src={instructor.image}   // <-- This will load the real image
-          alt={instructor.name}
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="p-4 flex justify-between items-center">
-        <h3 className="font-medium text-lg">{instructor.name}</h3>
-        <span className="text-gray-600 text-sm">{instructor.role}</span>
-      </div>
-    </div>
-  ))}
-</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {articles.map(({ id, title, summary, date, author, image }) => (
+            <article key={id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <img src={image} alt={title} className="w-full h-48 object-cover" />
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">{title}</h3>
+                <p className="text-gray-600 mb-4">{summary}</p>
+                <div className="text-sm text-gray-500 flex justify-between items-center">
+                  <span>{date}</span>
+                  <span className="font-medium">{author}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
 
 
         {/* Mobile instructor count badge */}

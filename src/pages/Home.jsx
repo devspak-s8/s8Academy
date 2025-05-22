@@ -13,7 +13,7 @@ import InstructorsSection from "../components/LandingPage/instructors-section";
 // 🔻 Footer
 import Newsletter from "../components/LandingPage/newsletter";
 import Footer from "../components/LandingPage/Footer";
-
+import FAQ from "@/components/LandingPage/FAQSection";
 const CourseDetails = () => {
   return (
     <div>
@@ -27,6 +27,7 @@ const CourseDetails = () => {
 
       <FeatureSection/>
       <RegistrationSection/>
+      <FAQ/>
       {/* Footer */}
       <Newsletter />
       <Footer />

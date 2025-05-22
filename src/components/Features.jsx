@@ -7,12 +7,10 @@ const features = [
 ];
 
 const Features = () => {
-  return (
-    <section className="feature-area mt-0 lg:mt-[-210px] xl:mt-[-110px]">
+  return (<section className="feature-area mt-20 lg:mt-20 xl:mt-20 bg-white">
   <div className="container-fluid pl-[15px] lg:pl-[190px] 2xl:max-w-[1140px] 2xl:pl-0">
-        <div className="flex flex-wrap">
-          {features.map((f, idx) => {
-            const Icon = f.icon;
+    <div className="flex flex-wrap">  {features.map((f, idx) => {
+            const Icon = f.icon
             return (
               <div
                 key={idx}
@@ -24,7 +22,7 @@ const Features = () => {
                 <h4 className="text-[18px] mb-[20px] font-semibold">{f.title}</h4>
                 <p className="mb-0 text-sm text-gray-700">{f.desc}</p>
               </div>
-            );
+            )
           })}
         </div>
       </div>
