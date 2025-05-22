@@ -137,36 +137,38 @@ export default function ProfilePage() {
       {/* Main Content */}
       <div className="flex-1">
         <header className="border-b">
-          <div className="flex justify-between items-center p-4">
-            <h1 className="text-xl font-bold">Student Dashboard</h1>
-            <div className="flex items-center gap-3">
-              <BalanceTag label="5 Courses" color="blue" />
+          <div className="flex justify-between items-center p-4 bg-white shadow-md rounded-md">
+            <h1 className="text-2xl font-extrabold text-purple-600">Student Dashboard</h1>
+            <div className="flex items-center gap-4">
+              <BalanceTag label="5 Courses" color="purple" />
               <BalanceTag label="2 Assignments Due" color="red" />
               <BalanceTag label="92% Progress" color="blue" icon="circle" />
+
               <LanguageSelector />
 
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="text-purple-600 hover:text-purple-800">
                 <Sun size={20} />
               </Button>
 
               <div className="relative">
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className="text-blue-600 hover:text-blue-800">
                   <Bell size={20} />
                 </Button>
-                <span className="absolute top-1 right-1 w-2 h-2 bg-green-500 rounded-full" />
+                <span className="absolute top-1 right-1 w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               </div>
 
-              <div className="flex items-center gap-2 bg-gray-100 rounded-full px-3 py-1">
-                <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs">
+              <div className="flex items-center gap-2 bg-purple-50 rounded-full px-3 py-1">
+                <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center text-white text-xs font-semibold">
                   S
                 </div>
-                <span className="text-sm">Sulayman</span>
-                <span className="text-xs text-gray-500 truncate max-w-[60px]">
+                <span className="text-sm font-medium text-purple-700">Sulayman</span>
+                <span className="text-xs text-purple-400 truncate max-w-[70px]">
                   #STU00123
                 </span>
               </div>
             </div>
           </div>
+
 
           {/* Tabs */}
           <Tabs
@@ -176,18 +178,20 @@ export default function ProfilePage() {
             className="w-full"
           >
             {/* Tab Navigation */}
-            <TabsList className="w-full overflow-x-auto flex-nowrap border-b mb-0 bg-white scrollbar-hide">
+            <TabsList className="w-full overflow-x-auto flex-nowrap scrollbar-hide px-4 py-2">
               {tabData.map((tab) => (
                 <TabsTrigger
                   key={tab.value}
                   value={tab.value}
-                  className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-600 border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:text-blue-600 flex items-center gap-2 transition-all"
+                  className="px-6 py-3 text-sm font-semibold text-gray-600 hover:text-purple-600 data-[state=active]:text-purple-600 flex items-center gap-2 transition-colors duration-300 ease-in-out"
+                  style={{ borderBottom: 'none' }}
                 >
                   {tab.icon}
                   {tab.label}
                 </TabsTrigger>
               ))}
             </TabsList>
+
 
             {/* Swipeable Content */}
             <div {...swipeHandlers} className="p-2 relative w-full">

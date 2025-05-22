@@ -8,6 +8,7 @@ import bannerImg from '../../assets/img/header-img.png';
 export default function HeroSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
    const [scrollY, setScrollY] = useState(0);         // current scroll pos
+  // eslint-disable-next-line no-unused-vars
   const [scrollDir, setScrollDir] = useState('up');  // scroll direction
   const [navVisible, setNavVisible] = useState(true); // controls nav show/hide
 

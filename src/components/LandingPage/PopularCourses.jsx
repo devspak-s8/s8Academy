@@ -107,18 +107,18 @@ const PopularCoursesSection = () => {
     ],
   };
   return (
-    <section className="py-32 p-20">
-      <div className="container mx-auto px-4">
-        {/* Section Title */}
-        <div className="text-start mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            Popular Courses <br /> Available Right Now
-          </h2>
-          <p className="text-lg text-gray-600 max-w-xl text-start">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua.
-          </p>
-        </div>
+  <section className="py-32 px-20 bg-white">
+  <div className="container mx-auto px-4">
+    {/* Section Title */}
+    <div className="text-start mb-12 max-w-3xl">
+      <h2 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+        <span className="text-purple-600">Popular</span> Courses <br /> 
+        <span className="text-black">Available Right Now</span>
+      </h2>
+      <p className="text-lg text-gray-700 max-w-xl">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </div>
 
         {/* Carousel */}
         <Slider {...settings}>
