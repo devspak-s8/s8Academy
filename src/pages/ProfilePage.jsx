@@ -21,7 +21,9 @@ import {
   Archive,
   BarChart,
   ClipboardList,
-  LayoutDashboard,
+  LayoutDashboard, 
+  Menu,
+  X
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -102,18 +104,23 @@ export default function ProfilePage() {
     preventScrollOnSwipe: true,
     trackMouse: true,
   });
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen bg-white">
       {/* Sidebar */}
       <div className="w-[220px] border-r p-4 flex flex-col">
-        <div className="flex items-center gap-2 mb-8">
-          <div className="bg-blue-600 text-white p-2 rounded-md font-bold">
-            S
-          </div>
-          <span className="font-bold text-lg">S8ACADEMY</span>
-        </div>
+       
 
-        <nav className="space-y-1 flex-1">
+   <aside
+        className={`
+          fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform
+          transition-transform duration-300 ease-in-out
+          ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+          z-30
+        `}
+      >
+        <nav className="flex flex-col space-y-1 p-4 pt-6 h-full">
           <SidebarItem icon={<Home size={18} />} label="Dashboard" />
           <SidebarItem icon={<Search size={18} />} label="Browse Courses" />
           <SidebarItem icon={<BookOpen size={18} />} label="My Courses" />
@@ -125,19 +132,26 @@ export default function ProfilePage() {
           <div className="pt-4" />
           <SidebarItem icon={<Send size={18} />} label="Discussions" />
           <SidebarItem icon={<BookOpen size={18} />} label="Resources" />
-          <SidebarItem
-            icon={<span className="font-bold text-[13px]">S8</span>}
-            label="About S8Academy"
-          />
+          <SidebarItem icon={<span className="font-bold text-[13px]">S8</span>} label="About S8Academy" />
+          <div className="text-xs text-gray-400 mt-auto px-4 py-2">© Mavia 2021</div>
         </nav>
+      </aside>
 
-        <div className="text-xs text-gray-400 mt-auto">© Mavia 2021</div>
+
       </div>
 
       {/* Main Content */}
       <div className="flex-1">
         <header className="border-b">
           <div className="flex justify-between items-center p-4 bg-white shadow-md rounded-md">
+             <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
+              className="p-2 rounded-md hover:bg-purple-100 text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-400"
+            >
+              {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+
             <h1 className="text-2xl font-extrabold text-purple-600">Student Dashboard</h1>
             <div className="flex items-center gap-4">
               <BalanceTag label="5 Courses" color="purple" />
