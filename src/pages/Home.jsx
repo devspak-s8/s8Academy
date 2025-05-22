@@ -1,35 +1,49 @@
 // src/CourseDetails.jsx
 import React from "react";
 
-// 🔻 Section Components
+// Core components
 import Banner from "../components/LandingPage/Banner";
-// 🔻 Optional UI Enhancements (can remove if not needed)
-import Features from "../components/Features";
-import VideoSection from "../components/LandingPage/VideoSection";
-import PopularCourses from "../components/LandingPage/PopularCourses";
+import IntroWhyChooseUs from "../components/LandingPage/IntroWhyChooseUs";  
 import FeatureSection from "../components/LandingPage/FeatureSection";
-import RegistrationSection from "../components/LandingPage/RegistrationForm";
-import InstructorsSection from "../components/LandingPage/instructors-section";
-// 🔻 Footer
-import Newsletter from "../components/LandingPage/newsletter";
+import PopularCourses from "../components/LandingPage/PopularCourses";
+import Testimonials from "../components/LandingPage/Testimonials";
+import FAQ from "../components/LandingPage/FAQSection";
+import CTABanner from "../components/LandingPage/CTABanner";
+import Newsletter from "../components/LandingPage/Newsletter";
 import Footer from "../components/LandingPage/Footer";
-import FAQ from "@/components/LandingPage/FAQSection";
+
+// Optional UI - remove if unused
+import Features from "../components/Features";
+
 const CourseDetails = () => {
   return (
     <div>
-      {/* Top Banner */}
+      {/* Hero Section */}
       <Banner />
 
-      <Features />
-      <PopularCourses />
-      <InstructorsSection />
-     
+      {/* <- Add it here */}
+      <IntroWhyChooseUs /> 
 
-      <FeatureSection/>
-      <RegistrationSection/>
-      <FAQ/>
-      {/* Footer */}
+      {/* Core Features */}
+      <FeatureSection />
+
+      {/* Courses */}
+      <PopularCourses />
+
+
+      {/* Social Proof */}
+      <Testimonials />
+
+      {/* FAQ */}
+      <FAQ />
+
+      {/* Call To Action */}
+      <CTABanner />
+
+      {/* Newsletter Signup */}
       <Newsletter />
+
+      {/* Footer */}
       <Footer />
     </div>
   );
