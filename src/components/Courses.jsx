@@ -25,7 +25,7 @@ export default function CourseCatalog() {
       institution: "MIT PROFESSIONAL EDUCATION",
       title: "No Code AI and Machine Learning: Building Data Science Solutions",
       duration: "12 Weeks",
-      format: "Online",
+      format: "Onlddine",
       schedule: "Weekend",
     },
     {
