@@ -8,7 +8,7 @@ import FeatureSection from "../components/LandingPage/FeatureSection";
 import PopularCourses from "../components/LandingPage/PopularCourses";
 import Testimonials from "../components/LandingPage/Testimonials";
 import FAQ from "../components/LandingPage/FAQSection";
-import CTABanner from "../components/LandingPage/CTABanner";
+import CTABanner from "../components/LandingPage/CTAbanner";
 import Newsletter from "../components/LandingPage/Newsletter";
 import Footer from "../components/LandingPage/Footer";
 import CourseCatalog from "../components/Courses";
