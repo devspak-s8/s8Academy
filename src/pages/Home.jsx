@@ -11,7 +11,7 @@ import FAQ from "../components/LandingPage/FAQSection";
 import CTABanner from "../components/LandingPage/CTABanner";
 import Newsletter from "../components/LandingPage/Newsletter";
 import Footer from "../components/LandingPage/Footer";
-
+import CourseCatalog from "../components/Courses";
 // Optional UI - remove if unused
 import Features from "../components/Features";
 
@@ -27,6 +27,7 @@ const CourseDetails = () => {
       {/* Core Features */}
       <FeatureSection />
 
+      <CourseCatalog />
       {/* Courses */}
       <PopularCourses />
 

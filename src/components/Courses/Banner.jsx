@@ -25,7 +25,7 @@ function CourseBanner({ course }) {
             Web Design
           </span>
           <ChevronRight className="h-4 w-4 mx-2 text-gray-300" />
-          <span className="text-gray-300">Product Design</span>
+          <span className="text-gray-300"> {course.title}</span>
 
           {/* Search bar */}
           <div className="ml-auto relative">

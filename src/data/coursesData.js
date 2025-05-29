@@ -160,90 +160,9 @@ const coursesData = [
           },
         ],
       },
-      {
-        id: 6,
-        title: "Chapter 6: React Advanced Concepts",
-        subtitle: "Hooks, Context, and Performance",
-        duration: "1h 30m",
-        lessons: [
-          {
-            id: 1,
-            title: "Using React Hooks",
-            description: "UseState, UseEffect, and custom hooks.",
-          },
-          {
-            id: 2,
-            title: "React Context API",
-            description: "Global state management made easy.",
-          },
-          {
-            id: 3,
-            title: "Optimizing React Apps",
-            description: "Memoization and performance tips.",
-          },
-          {
-            id: 4,
-            title: "React Router Basics",
-            description: "Build multi-page SPAs.",
-          },
-        ],
-      },
-      {
-        id: 7,
-        title: "Chapter 7: Next.js Fundamentals",
-        subtitle: "Server-side rendering & static sites",
-        duration: "1h 15m",
-        lessons: [
-          {
-            id: 1,
-            title: "What is Next.js?",
-            description: "Next.js architecture overview.",
-          },
-          {
-            id: 2,
-            title: "Pages and Routing",
-            description: "Dynamic routing with Next.js.",
-          },
-          {
-            id: 3,
-            title: "Static Generation vs SSR",
-            description: "Rendering strategies explained.",
-          },
-          {
-            id: 4,
-            title: "API Routes",
-            description: "Building backend endpoints with Next.js.",
-          },
-        ],
-      },
-      {
-        id: 8,
-        title: "Chapter 8: Styling in React & Next.js",
-        subtitle: "CSS, Tailwind, and Styled Components",
-        duration: "55 minutes",
-        lessons: [
-          {
-            id: 1,
-            title: "CSS Modules",
-            description: "Scoped CSS for components.",
-          },
-          {
-            id: 2,
-            title: "Using Tailwind CSS",
-            description: "Utility-first styling approach.",
-          },
-          {
-            id: 3,
-            title: "Styled Components",
-            description: "CSS-in-JS styling.",
-          },
-          {
-            id: 4,
-            title: "Responsive Design in React",
-            description: "Media queries and mobile-first styling.",
-          },
-        ],
-      },
+   
+     
+      
       // Continue adding more chapters till 16...
     ],
   },
