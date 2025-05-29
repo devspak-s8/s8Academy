@@ -9,11 +9,10 @@ import PopularCourses from "../components/LandingPage/PopularCourses";
 import Testimonials from "../components/LandingPage/Testimonials";
 import FAQ from "../components/LandingPage/FAQSection";
 import CTABanner from "../components/LandingPage/CTAbanner";
-import Newsletter from "../components/LandingPage/Newsletter";
+import Newslettera from "../components/LandingPage/Newsletter";
 import Footer from "../components/LandingPage/Footer";
 import CourseCatalog from "../components/Courses";
 // Optional UI - remove if unused
-import Features from "../components/Features";
 
 const CourseDetails = () => {
   return (
@@ -42,7 +41,7 @@ const CourseDetails = () => {
       <CTABanner />
 
       {/* Newsletter Signup */}
-      <Newsletter />
+      <Newslettera />
 
       {/* Footer */}
       <Footer />
