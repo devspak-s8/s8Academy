@@ -2,7 +2,7 @@ import CourseCard from "@/components/course-card"
 import CategoryMenuItem from "@/components/category-menu-item"
 import { BarChart2, Database, Shield, Monitor, Plus } from "lucide-react"
 
-export default function CourseCatalog() {
+const CourseCatalog = () => {
   const categoryItems = [
     { icon: <BarChart2 className="w-5 h-5" />, label: "Popular Courses", active: true },
     { icon: <Database className="w-5 h-5" />, label: "AI & Machine Learning" },
@@ -83,3 +83,4 @@ export default function CourseCatalog() {
     </div>
   )
 }
+export default CourseCatalog;

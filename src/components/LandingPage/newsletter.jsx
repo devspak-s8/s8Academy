@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-export default function Newslettera() {
+const Newslettera= () =>{
   const [email, setEmail] = useState("")
 
   const handleSubmit = (e) => {
@@ -50,3 +50,5 @@ export default function Newslettera() {
     </div>
   )
 }
+
+export default Newslettera;

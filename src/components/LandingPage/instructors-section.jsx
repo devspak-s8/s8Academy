@@ -5,8 +5,7 @@ import p1 from '../../assets/img/popular-course/p1.jpg';
 import p2 from '../../assets/img/popular-course/1000281686.jpg';
 import p3 from '../../assets/img/popular-course/p2.jpg';
 
-
-export default function InstructorsSection() {
+const InstructorsSection = () => {
   const articles = [
     {
       id: 1,
@@ -105,3 +104,6 @@ export default function InstructorsSection() {
     </section>
   )
 }
+
+export default  InstructorsSection ;
+; 
