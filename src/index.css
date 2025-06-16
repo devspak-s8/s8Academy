@@ -95,6 +95,10 @@
     transform: scale(1) translateY(0);
   }
 }
+.ReactModal__Overlay {
+  background-color: transparent !important;
+  pointer-events: auto !important;
+}
 
     @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
