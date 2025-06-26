@@ -9,7 +9,7 @@ import PopularCourses from "../components/LandingPage/PopularCourses";
 import Testimonials from "../components/LandingPage/Testimonials";
 import FAQ from "../components/LandingPage/FAQSection";
 import CTABanner from "../components/LandingPage/CTAbanner";
-import Newslettera from "../components/LandingPage/Newsletter";
+import Newsletter from "../components/LandingPage/Newsletter";
 import Footer from "../components/LandingPage/Footer";
 
 // 🔥 Skeleton Components
@@ -79,7 +79,7 @@ const CourseDetails = () => {
           <Testimonials />
           <FAQ />
           <CTABanner />
-          <Newslettera />
+          <Newsletter />
           <Footer />
         </>
       )}

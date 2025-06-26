@@ -33,7 +33,6 @@ import {
 } from "lucide-react";
 
 import { NavMain } from "@/components/ui/nav-main";
-import { NavProjects } from "@/components/ui/nav-projects";
 import { NavSecondary } from "@/components/ui/nav-secondary";
 import { NavUser } from "@/components/ui/nav-user";
 import {
@@ -55,7 +54,7 @@ const data = {
   navMain: [
     {
       title: "Dashboard",
-      url: "/dashboard",
+      url: "/dashboard/student-dashboard",
       icon: LayoutDashboard,
       isActive: true,
       items: [
@@ -64,21 +63,21 @@ const data = {
       ],
     },
     {
-  title: "Courses",
-  url: "/dashboard/courses",
-  icon: BookOpen,
-  items: [
-    { title: "All Courses", url: "/dashboard/courses" },
-    { title: "Add New", url: "/dashboard/courses/create" },
-    { title: "Categories", url: "/dashboard/courses/categories" },
-  ],
-},
+      title: "Courses",
+      url: "/dashboard/courses",
+      icon: BookOpen,
+      items: [
+        { title: "All Courses", url: "/dashboard/courses" },
+        { title: "Add New", url: "/dashboard/courses/create" },
+        { title: "Categories", url: "/dashboard/courses/categories" },
+      ],
+    },
     {
       title: "Lessons",
-      url: "/lessons",
+      url: "/dashboard/lessons",
       icon: FileText,
       items: [
-        { title: "All Lessons", url: "/lessons" },
+        { title: "All Lessons", url: "/lessons/all" },
         { title: "Upload Lesson", url: "/lessons/upload" },
       ],
     },
@@ -141,23 +140,6 @@ const data = {
       icon: Send,
     },
   ],
-  projects: [
-    {
-      name: "S8 Portfolio Site",
-      url: "/projects/s8-portfolio",
-      icon: Frame,
-    },
-    {
-      name: "S8 E-commerce",
-      url: "/projects/s8-ecommerce",
-      icon: ShoppingBag,
-    },
-    {
-      name: "S8 Blog Template",
-      url: "/projects/s8-blog",
-      icon: FileText,
-    },
-  ],
 };
 
 export function AppSidebar({ ...props }) {
@@ -185,7 +167,6 @@ export function AppSidebar({ ...props }) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>

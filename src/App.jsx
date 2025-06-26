@@ -41,6 +41,7 @@ import InstructorProfile from "./pages/settings/InstructorProfile";
 import Support from "./pages/support/Support";
 import Feedback from "./pages/feedback/Feedback";
 
+import StudentDashboard from "./pages/dashboard/StudentDashboard";
 function App() {
   return (
     <Router>
@@ -58,6 +59,8 @@ function App() {
           <Route path="courses/create" element={<CreateCourse />} />
           <Route path="courses/categories" element={<Categories />} />
 
+          <Route path="student-dashboard" element={<StudentDashboard />} />
+          
           <Route path="lessons" element={<AllLessons />} />
           <Route path="lessons/upload" element={<UploadLesson />} />
 
