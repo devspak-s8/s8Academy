@@ -41,6 +41,7 @@ import InstructorProfile from "./pages/settings/InstructorProfile";
 import Support from "./pages/support/Support";
 import Feedback from "./pages/feedback/Feedback";
 
+import MultiStepForm from "./pages/account-form";
 import StudentDashboard from "./pages/dashboard/StudentDashboard";
 function App() {
   return (

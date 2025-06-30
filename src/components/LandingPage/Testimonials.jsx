@@ -1,53 +1,50 @@
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const testimonials = [
   {
-    id: 1,
-    name: 'Jane Doe',
-    image: 'https://randomuser.me/api/portraits/women/68.jpg',
-    quote: 'This platform transformed my learning experience. Highly recommended!',
+    name: "TREASURE AJEFU",
+    role: "Frontend Engineering",
+    image: "https://via.placeholder.com/150", // replace with actual image
+    testimonial:
+      "I was 17 years old when I joined AltSchool Africa. They have the best instructors for live classes and recorded lessons. Since I completed my program, I have been able to get jobs as a software engineer. AltSchool Africa gave me the roadmap and the learning experience that I wouldn’t have gotten at any other place."
   },
   {
-    id: 2,
-    name: 'John Smith',
-    image: 'https://randomuser.me/api/portraits/men/45.jpg',
-    quote: 'Great instructors and flexible schedule. I learned so much.',
-  },
-  {
-    id: 3,
-    name: 'Samantha Lee',
-    image: 'https://randomuser.me/api/portraits/women/51.jpg',
-    quote: 'I love the community and support here. It really helps me stay motivated.',
-  },
+    name: "SAMANTHA GLORIA",
+    role: "Backend Engineer",
+    image: "https://via.placeholder.com/150", // replace with actual image
+    testimonial:
+      "I think one of the best things that happened to me at AltSchool was learning from people from Nigeria, Kenya [and other African countries]. You get a different perspective on learning and also enjoy a community that helps people grow in so many different ways. AltSchool equipped me with what I needed to get into the door. If I hadn’t been to AltSchool, I’d know nothing."
+  }
 ];
 
- const Testimonials = () => {
+export default function Testimonials() {
   return (
-    <section className="max-w-7xl mx-auto py-16 px-6">
-      <h2 className="text-4xl font-bold mb-12 text-center">
-        What Our <span className="text-purple-600">Students</span> Say
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {testimonials.map(({ id, name, image, quote }) => (
-          <motion.div
-            key={id}
-            className="bg-white p-6 rounded-lg shadow-lg transform transition duration-500 hover:scale-105"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            <img
-              src={image}
-              alt={name}
-              className="h-16 w-16 rounded-full mx-auto mb-4 object-cover"
-            />
-            <p className="text-gray-700 italic mb-4">"{quote}"</p>
-            <h3 className="text-center font-semibold">{name}</h3>
-          </motion.div>
-        ))}
-      </div>
-    </section>
+    <div className="flex flex-col gap-10 items-center justify-center py-10 px-4 md:px-10">
+      {testimonials.map((item, idx) => (
+        <div
+          key={idx}
+          className={`flex flex-col md:flex-row items-center gap-6 w-full max-w-5xl ${
+            idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+          }`}
+        >
+          <Avatar className="w-32 h-32">
+            <AvatarImage src={item.image} alt={item.name} />
+            <AvatarFallback>{item.name[0]}</AvatarFallback>
+          </Avatar>
+
+          <Card className="shadow-lg w-full md:w-[80%]">
+            <CardContent className="p-6">
+              <h3 className="text-lg text-blue-600 font-semibold">{item.role}</h3>
+              <p className="text-sm text-gray-900 font-bold mt-1">{item.name}</p>
+              <p className="text-gray-700 mt-3 text-base leading-relaxed">
+                {item.testimonial}
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      ))}
+    </div>
   );
 }
-export default Testimonials;

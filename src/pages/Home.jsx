@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 // Components
 import Banner from "../components/LandingPage/Banner";
 import IntroWhyChooseUs from "../components/LandingPage/IntroWhyChooseUs";
-import FeatureSection from "../components/LandingPage/FeatureSection";
+import Courses  from "../components/LandingPage/FeatureSection";
 import CourseCatalog from "../components/Courses";
 import PopularCourses from "../components/LandingPage/PopularCourses";
 import Testimonials from "../components/LandingPage/Testimonials";
@@ -55,7 +55,7 @@ const SkeletonCourseDetails = () => (
     <SkeletonSection title={false} cards={1} />
   </div>
 );
-const CourseDetails = () => {
+const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const CourseDetails = () => {
         <>
           <Banner />
           <IntroWhyChooseUs />
-          <FeatureSection />
+          <Courses />
           <CourseCatalog />
           <PopularCourses />
           <Testimonials />
@@ -117,4 +117,4 @@ const CourseDetails = () => {
   );
 };
 
-export default CourseDetails;
+export default Home;

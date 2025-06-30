@@ -1,104 +1,63 @@
 import React from "react";
-import {
-  FaKey,
-  FaFileAlt,
-  FaMedal,
-  FaBriefcase,
-  FaCrown,
-  FaHeadphonesAlt,
-} from "react-icons/fa";
-const features = [
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import p1 from '../../assets/img/popular-course/p1.jpg';
+import p2 from '../../assets/img/popular-course/1000281686.jpg';
+import p3 from '../../assets/img/popular-course/p2.jpg';
+import p4 from '../../assets/img/popular-course/1000280167.jpg';
+import p5 from '../../assets/img/popular-course/1000281629.jpg';
+import p6 from '../../assets/img/popular-course/p4.jpg';
+const courses = [
   {
-    icon: (
-      <FaKey className="text-4xl text-gray-800 transition-colors duration-300 group-hover:text-purple-600" />
-    ),
-    title: "Lifetime Access",
+    title: "Data Analysis",
     description:
-      "Get unlimited access to all learning resources, anytime — your journey doesn’t expire.",
+      "Upon completion of the Data Analysis course, you will be equipped with a comprehensive skill set to analyze and present data effectively, transforming raw data into actionable insights.",
+    image: p1, // replace with actual image
+    tag: "BEGINNER FRIENDLY"
   },
   {
-    icon: (
-      <FaFileAlt className="text-4xl text-gray-800 transition-colors duration-300 group-hover:text-purple-600" />
-    ),
-    title: "Project Resources",
+    title: "Product Design",
     description:
-      "Downloadable files, templates, and real-world projects to sharpen your skills hands-on.",
+      "This course will take you through the basic principles of designing products that address user needs and align with business goals.",
+    image: p4, // replace with actual image
+    tag: "BEGINNER FRIENDLY"
   },
   {
-    icon: (
-      <FaMedal className="text-4xl text-gray-800 transition-colors duration-300 group-hover:text-purple-600" />
-    ),
-    title: "Verified Certificates",
+    title: "Cyber Security",
     description:
-      "Earn certificates recognized by tech recruiters and startups — boost your credibility.",
-  },
-  {
-    icon: (
-      <FaBriefcase className="text-4xl text-gray-800 transition-colors duration-300 group-hover:text-purple-600" />
-    ),
-    title: "Career-Focused Content",
-    description:
-      "Courses tailored for job-readiness, freelancing, and launching your own tech startup.",
-  },
-  {
-    icon: (
-      <FaCrown className="text-4xl text-gray-800 transition-colors duration-300 group-hover:text-purple-600" />
-    ),
-    title: "Mentorship Access",
-    description:
-      "Connect with industry experts and get one-on-one feedback on your progress.",
-  },
-  {
-    icon: (
-      <FaHeadphonesAlt className="text-4xl text-gray-800 transition-colors duration-300 group-hover:text-purple-600" />
-    ),
-    title: "Real-time Support",
-    description:
-      "Join live Q&A sessions, bootcamps, and community chats — help is always nearby.",
-  },
+      "Become well-equipped to enter the workforce with a solid foundation in both theoretical and practical aspects of cybersecurity, with no degree or prior experience required",
+    image: p2, // replace with actual image
+    tag: "BEGINNER FRIENDLY"
+  }
 ];
 
-const FeatureSection = () => {
+export default function Courses() {
   return (
-    <section className="py-24 px-8 sm:px-16 lg:px-44 pt-[100px] lg:pt-[100px] lg:py-32">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap">
-          {/* Section Title */}
-          <div className="w-full mb-12 text-left px-4 lg:w-full">
-            <h2 className="text-3xl md:text-4xl font-bold leading-tight text-gray-600">
-              Features Everyone Can Tap Into <br /> Anytime, Anywhere
-            </h2>
-            <p className="mt-4 text-gray-600 max-w-xs">
-              Unlock powerful tools and perks designed to level up your skills
-              and career — no strings attached, no limits.
-            </p>
-          </div>
+    <div className="flex flex-col md:flex-row gap-6 justify-center items-start py-12 px-4 md:px-10 bg-gradient-to-r from-[#f0faff] to-[#ffffff]">
+      {courses.map((item, index) => (
+        <Card key={index} className="w-full max-w-sm shadow-xl rounded-2xl overflow-hidden">
+          <div className="relative">
 
-          {/* Feature Items */}
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className={`w-full md:w-6/12 lg:w-4/12 px-[30px] mb-8 ${
-                index === 1 || index === 4
-                  ? "lg:mt-[-160px]"
-                  : index === 2 || index === 5
-                  ? "lg:mt-[-260px]"
-                  : ""
-              }`}
-            >
-              <div className="group p-8 md:p-10 bg-gray-100 hover:bg-white hover:shadow-lg transition-all duration-300 rounded-lg">
-                {feature.icon}
-                <h4 className="mt-8 text-lg font-semibold text-gray-600">
-                  {feature.title}
-                </h4>
-                <p className="mt-5 text-gray-600">{feature.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+            <div className="rounded-2xl overflow-hidden w-full h-48 bg-none p-[10px]">
+      
+       <img src={item.image} alt={item.title} className="rounded-3xl w-full h-48 object-cover" />
+         
       </div>
-    </section>
-  );
-};
 
-export default FeatureSection;
+             <span className="absolute bottom-2 right-2 bg-orange-400 text-white text-xs font-semibold px-3 py-1 rounded">
+              {item.tag}
+            </span>
+          </div>
+          <CardContent className="p-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p className="text-gray-700 mb-4 leading-relaxed text-sm">{item.description}</p>
+            <Button variant="ghost" className="flex items-center gap-2 text-blue-600 font-medium">
+              <span className="bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-sm">Learn more</span>
+              <span className="text-lg">→</span>
+            </Button>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
